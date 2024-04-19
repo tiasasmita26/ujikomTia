@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\FotoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -48,13 +50,14 @@ Route::get('/TambahDataFoto', function () {
     return view('admin.TambahDataFoto');
 });
 
-Route::get('/Album', function () {
-    return view('admin.Album');
-});
+Route::get('/DataFoto', [FotoController::class, 'index']);
+Route::get('/TambahDataFoto', [FotoController::class, 'create'])->name('TambahDataFoto');  
+Route::post('/TambahDataFoto', [FotoController::class, 'store'])->name('simpann');   
 
-Route::get('/TambahAlbum', function () {
-    return view('admin.TambahAlbum');
-});
+
+Route::get('/Album', [AlbumController::class, 'index'])->name('albumDashboard');
+Route::get('/TambahAlbum', [AlbumController::class, 'create']);  
+Route::post('/TambahAlbum', [AlbumController::class, 'store'])->name('simpan'); 
 
 
 

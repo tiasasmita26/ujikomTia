@@ -6,9 +6,7 @@
     </div>
     <div class="card-body">
       <table class="table">
-        <thead>
           <tr>
-            <th scope="col">No</th>
             <th scope="col">FotoID</th>
             <th scope="col">Judul Foto</th>
             <th scope="col">Deskripsi Foto</th>
@@ -18,32 +16,23 @@
             <th scope="col">User ID</th>
             <th scope="col">Aksi</th>
           </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>ahhaha</td>
-            <td>jajajaja</td>
-            <td>kakakakak</td>
-            <td>jajajaja</td>
-            <td>jajajajaj</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Lala</td>
-            <td>haha</td>
-            <td>@mdi</td>
-            <td>ahhaha</td>
-            <td>jajajaja</td>
-            <td>kakakakak</td>
-            <td>jajajaja</td>
-            <td>jajajajaj</td>
-          </tr>
-        </tbody>
+          @foreach ($photo as $data)
+            <tr>
+              <td>{{ $data->FotoID }}</td>
+              <td>{{ $data->JudulFoto }}</td>
+              <td>{{ $data->DeskripsiFoto }}</td>
+              <td>{{ $data->TanggalUnggah}}</td>
+              <td>{{ $data->LokasiFile}}</td>
+              <td>{{ $data->AlbumID}}</td>
+              <td>{{ $data->UserID}}</td> 
+              <td>
+               {{-- <a href="{{ route('editFoto', $data->FotoId) }}"><button>Edit</button></a> --}}
+              <a href=""><button>Hapus</button></a>
+              </td>
+            </tr>
+          @endforeach
       </table>
     </div>
   </div>
+
 @endsection
